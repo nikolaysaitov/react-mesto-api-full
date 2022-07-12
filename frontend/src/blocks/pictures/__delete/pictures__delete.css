@@ -1,0 +1,18 @@
+.pictures__delete {
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 19px;
+    position: absolute;
+    background-image: url(../../../images/deleteButton.svg);
+    border: none;
+    background-color: transparent;
+    transition: 0.3s;
+    margin-top: 20px;
+    margin-left: 244px;
+}
+
+.pictures__delete:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}

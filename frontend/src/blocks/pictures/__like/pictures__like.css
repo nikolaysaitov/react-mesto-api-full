@@ -1,0 +1,16 @@
+.pictures__like {
+    background-image: url(../../../images/Vector_like.svg);
+    min-width: 22px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    /* margin: 5px 5px 1px 0px; */
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.pictures__like:hover {
+    opacity: 0.5;
+}

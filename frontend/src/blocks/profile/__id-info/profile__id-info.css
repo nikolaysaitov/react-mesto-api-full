@@ -1,0 +1,16 @@
+.profile__id-info {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 336px;
+    height: 73px;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .profile__id-info {
+        text-align: center;
+        width: 282px;
+        display: contents;
+    }
+}

@@ -1,0 +1,53 @@
+.popup__close {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-color: initial;
+    border: none;
+    transition: opacity .3s ease-in;
+    cursor: pointer;
+    top: -40px;
+    right: -40px;
+    margin: 0px 0px 8px 8px;
+    padding: 0;
+}
+
+.popup__close::after,
+.popup__close::before {
+    width: 2px;
+    height: 32px;
+    position: absolute;
+    background-color: #ffffff;
+    top: -1px;
+    right: 14px;
+    content: '';
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+}
+
+
+.popup__close::after {
+    transform: rotate(-45deg);
+}
+
+.popup__close::before {
+    transform: rotate(-135deg);
+}
+
+
+@media (min-width: 320px) and (max-width: 468px) {
+    .popup__close {
+        width: 20px;
+        height: 20px;
+        right: 0px;
+    }
+
+    .popup__close::after,
+    .popup__close::before {
+        width: 2px;
+        height: 20px;
+        right: 8px;
+    }
+}

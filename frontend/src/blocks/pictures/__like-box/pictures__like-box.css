@@ -1,0 +1,9 @@
+.pictures__like-box {
+    align-items: center;
+    bottom: 21px;
+    display: flex;
+    flex-direction: column;
+    /* position: absolute; */
+    right: 20px;
+    margin: 0px 5px 1px 0px;
+}

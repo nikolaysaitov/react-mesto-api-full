@@ -1,0 +1,6 @@
+.popup__info-icon {
+  display: flex;
+  margin: 26px auto 32px;
+  width: 120px;
+  height: 120px;
+}
