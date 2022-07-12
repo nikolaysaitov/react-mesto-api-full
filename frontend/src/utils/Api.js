@@ -1,7 +1,7 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ serverUrl, headers }) {
     this._headers = headers;
-    this._baseUrl = baseUrl; // тело конструктора
+    this._serverUrl = options.serverUrl; // тело конструктора
   }
 
   _getResponseData(res) {
@@ -12,7 +12,7 @@ class Api {
 }
 
   getProfile() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._serverUrl}/users/me`, {
       headers: this._headers,
     })
       .then(this._getResponseData)
@@ -20,7 +20,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._serverUrl}/cards`, {
       headers: this._headers,
     })
     .then(this._getResponseData)
@@ -28,7 +28,7 @@ class Api {
   }
 
   editProfile(name, about) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._serverUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -40,7 +40,7 @@ class Api {
     
   }
   addCard(name, link) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._serverUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -52,7 +52,7 @@ class Api {
     
   }
   deleteCard(id) {
-    return fetch(`${this._baseUrl}/cards/${id}`, {
+    return fetch(`${this._serverUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers
     })
@@ -61,7 +61,7 @@ class Api {
   }
 
   deleteLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+    return fetch(`${this._serverUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers
     })
@@ -70,7 +70,7 @@ class Api {
   }
 
   addLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+    return fetch(`${this._serverUrl}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers
     })
@@ -80,7 +80,7 @@ class Api {
 
   
   updateAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return fetch(`${this._serverUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -96,7 +96,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-39",
+  serverUrl: "http://saitovkmsapi.nomoredomains.xyz",
   headers: {
     authorization: "083f1856-1d24-41b5-bab8-7705d2d18558",
     "Content-Type": "application/json",
