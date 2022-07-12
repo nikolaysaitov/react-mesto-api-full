@@ -1,7 +1,7 @@
 class Api {
   constructor({ options }) {
-    this._headers = headers;
-    this._serverUrl = options.serverUrl; // тело конструктора
+    this._serverUrl = options.serverUrl; 
+    this._headers = options.headers;
   }
 
   _getResponseData(res) {
