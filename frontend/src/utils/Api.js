@@ -98,7 +98,7 @@ class Api {
 export const api = new Api({
   serverUrl: "http://saitovkmsapi.nomoredomains.xyz",
   headers: {
-    authorization: "083f1856-1d24-41b5-bab8-7705d2d18558",
-    "Content-Type": "application/json",
-  },
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  }
 });
