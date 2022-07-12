@@ -1,4 +1,5 @@
 {
+  "homepage": "/",
   "name": "mesto-react-auth",
   "version": "0.1.0",
   "private": true,
