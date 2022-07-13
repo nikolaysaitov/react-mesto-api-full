@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://saitovkms.nomoredomains.xyz';
+export const BASE_URL = 'https://auth.nomoreparties.co';
 
 
    
