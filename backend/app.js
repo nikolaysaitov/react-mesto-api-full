@@ -1,4 +1,4 @@
-// app.js — входной файл
+require('dotenv').config(); 
 
 const express = require('express');
 
@@ -27,6 +27,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(requestLogger); // подключаем логгерзапросов
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
