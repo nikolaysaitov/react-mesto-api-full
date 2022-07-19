@@ -61,7 +61,7 @@
 // }
 
 
-   
+
 // function checkResponse(res) {
 //     if (res.ok) {
 //         return res.json();
@@ -111,7 +111,7 @@
 let baseUrl = '';
 const { NODE_ENV } = process.env;
 if ( NODE_ENV === 'production' ) {
-  baseUrl = 'https://apims.nomoredomains.xyz';
+  baseUrl = 'https://saitovkmsapi.nomoredomains.xyz/';
 } else {
   baseUrl = 'http://localhost:3000'
 }
