@@ -243,20 +243,20 @@ function App() {
         .then((res) => {
           handleLogin();
           history.push("/");
-          setEmail(res.data.email);
+          setEmail(email);
         })
         .catch((err) => console.log(err));
     }
   }
 
   return (
-    
+
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Header email={email} onExit={handleExit} />
-        
+
         <Switch>
-       
+
           <ProtectedRoute
             exact
             path="/"
@@ -280,9 +280,9 @@ function App() {
               onSubmit={handleRegistrSubmit}
             />
           </Route>
-          
+
         </Switch>
-       
+
         <InfoTooltip isOPen={isInfoPopupOpen} isReg={isReg} />
 
         {loggedIn && <Footer />}
@@ -317,7 +317,7 @@ function App() {
         <ImagePopup selectedCard={selectedCard} onClose={closeAllPopups} />
       </CurrentUserContext.Provider>
     </div>
-   
+
   );
 }
 
