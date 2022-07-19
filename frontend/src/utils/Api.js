@@ -95,18 +95,4 @@ class Api {
   // другие методы работы с API
 }
 
-// export const api = new Api({
-//   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-39",
-//   headers: {
-//     authorization: "083f1856-1d24-41b5-bab8-7705d2d18558",
-//     "Content-Type": "application/json",
-//   },
-// });
-
-export const api = new Api({
-  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`,
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
-});
+export default Api;
