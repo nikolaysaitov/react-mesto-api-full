@@ -18,9 +18,10 @@ const app = express();
 // подключаемся к серверу mongo
 mongoose.connect("mongodb://localhost:27017/mestodb");
 // подключаем мидлвары, роуты и всё остальное...
+app.use(cors);
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(cors);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(requestLogger); // подключаем логгерзапросов

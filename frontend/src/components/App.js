@@ -30,21 +30,22 @@ function App() {
   const [isReg, setIsReg] = useState(false);
   const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
 
-  let baseUrl = '';
+  let baseUrl = "";
   const { NODE_ENV } = process.env;
-  console.log(NODE_ENV)
-  if (NODE_ENV === 'production') {
-    baseUrl = 'https://saitovkmsapi.nomoredomains.xyz/';
+  console.log(NODE_ENV);
+  if (NODE_ENV === "production") {
+    baseUrl = "https://saitovkmsapi.nomoredomains.xyz/";
   } else {
-    baseUrl = 'http://localhost:3000'
+    baseUrl = "http://localhost:3000";
   }
   const api = new Api({
     baseUrl: baseUrl,
+    credentials: "include",
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    }
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
   });
 
   const handleEditAvatarClick = () => {
@@ -83,7 +84,8 @@ function App() {
           setCurrentUser(userData);
           setCards(cardData);
         })
-        .catch((err) => console.log(`Ошибка ${err}`));
+        .catch((err) => console.log(`Ошибка ${err}`))
+        .finally(() => {});
     }
   }, [loggedIn]);
 
@@ -240,7 +242,7 @@ function App() {
     if (jwt) {
       auth
         .checkToken(jwt)
-        .then((res) => {
+        .then(({ email }) => {
           handleLogin();
           history.push("/");
           setEmail(email);
@@ -250,13 +252,11 @@ function App() {
   }
 
   return (
-
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Header email={email} onExit={handleExit} />
 
         <Switch>
-
           <ProtectedRoute
             exact
             path="/"
@@ -280,7 +280,6 @@ function App() {
               onSubmit={handleRegistrSubmit}
             />
           </Route>
-
         </Switch>
 
         <InfoTooltip isOPen={isInfoPopupOpen} isReg={isReg} />
@@ -317,7 +316,6 @@ function App() {
         <ImagePopup selectedCard={selectedCard} onClose={closeAllPopups} />
       </CurrentUserContext.Provider>
     </div>
-
   );
 }
 
