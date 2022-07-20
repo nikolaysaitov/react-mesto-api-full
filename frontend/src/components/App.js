@@ -60,9 +60,9 @@ function App() {
   }
   const token = localStorage.getItem('jwt');
   useEffect(() => {
-    handleTokenCheck(token);
+    handleTokenCheck();
     if (loggedIn) {
-      Promise.all([api.getProfile(), api.getInitialCards()])
+      Promise.all([api.getProfile(token), api.getInitialCards(token)])
         .then(([userData, cardData]) => {
           setCurrentUser(userData);
           setCards(cardData);
