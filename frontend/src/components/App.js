@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Header";
@@ -6,7 +5,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import Api from "../utils/Api";
+import { api } from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -29,24 +28,7 @@ function App() {
   const history = useHistory();
   const [isReg, setIsReg] = useState(false);
   const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
-
-  let baseUrl = "";
-  const { NODE_ENV } = process.env;
-  console.log(NODE_ENV);
-  if (NODE_ENV === "production") {
-    baseUrl = "https://saitovkmsapi.nomoredomains.xyz/";
-  } else {
-    baseUrl = "http://localhost:3000";
-  }
-  const api = new Api({
-    baseUrl: baseUrl,
-    credentials: "include",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  const token = localStorage.getItem('jwt');
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -84,8 +66,7 @@ function App() {
           setCurrentUser(userData);
           setCards(cardData);
         })
-        .catch((err) => console.log(`Ошибка ${err}`))
-        .finally(() => {});
+        .catch((err) => console.log(`Ошибка ${err}`));
     }
   }, [loggedIn]);
 
@@ -126,14 +107,14 @@ function App() {
 
   useEffect(() => {
     api
-      .getProfile()
+      .getProfile(token)
       .then((res) => setCurrentUser(res))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     api
-      .getInitialCards()
+      .getInitialCards(token)
       .then((cards) => setCards(cards))
       .catch((err) => console.log(err));
   }, []);
@@ -242,21 +223,23 @@ function App() {
     if (jwt) {
       auth
         .checkToken(jwt)
-        .then(({ email }) => {
+        .then((res) => {
           handleLogin();
           history.push("/");
-          setEmail(email);
+          setEmail(res.data.email);
         })
         .catch((err) => console.log(err));
     }
   }
 
   return (
+    
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Header email={email} onExit={handleExit} />
-
+        
         <Switch>
+       
           <ProtectedRoute
             exact
             path="/"
@@ -280,8 +263,9 @@ function App() {
               onSubmit={handleRegistrSubmit}
             />
           </Route>
+          
         </Switch>
-
+       
         <InfoTooltip isOPen={isInfoPopupOpen} isReg={isReg} />
 
         {loggedIn && <Footer />}
@@ -316,6 +300,7 @@ function App() {
         <ImagePopup selectedCard={selectedCard} onClose={closeAllPopups} />
       </CurrentUserContext.Provider>
     </div>
+   
   );
 }
 

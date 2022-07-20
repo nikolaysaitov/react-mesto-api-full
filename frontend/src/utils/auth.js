@@ -1,13 +1,25 @@
-let baseUrl = '';
+// export const BASE_URL = 'http://saitovkmsapi.nomoredomains.xyz/';
+
+export let BASE_URL = '';
 const { NODE_ENV } = process.env;
 if ( NODE_ENV === 'production' ) {
-  baseUrl = 'https://saitovkmsapi.nomoredomains.xyz/';
+    BASE_URL = 'https://saitovkmsapi.nomoredomains.xyz/';
 } else {
-  baseUrl = 'http://localhost:3000'
+    BASE_URL = 'http://localhost:3000'
+}
+
+
+
+   
+function checkResponse(res) {
+    if (res.ok) {
+        return res.json();
+    }
+    return Promise.reject(res.status);
 }
 
 export const register = (email, password) => {
-    return fetch(`${baseUrl}/signup`, {
+    return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -17,17 +29,11 @@ export const register = (email, password) => {
             "email": email,
             "password": password
         })
-    })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
-        .catch((err) => console.log(err));
+    }).then(checkResponse);
 };
 
 export const authorize = (email, password) => {
-    return fetch(`${baseUrl}/signin`, {
+    return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -37,23 +43,11 @@ export const authorize = (email, password) => {
             "email": email,
             "password": password
         })
-    })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
-        .then((data) => {
-            if (data.token) {
-                localStorage.setItem('jwt', data.token);
-                return data;
-            }
-        })
-        .catch(err => console.log(err))
+    }).then(checkResponse);
 };
 
 export const checkToken = (token) => {
-    return fetch(`${baseUrl}/users/me`, {
+    return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -61,6 +55,5 @@ export const checkToken = (token) => {
             'Authorization': `Bearer ${token}`,
         }
     })
-        .then(res => res.json())
-        .then(data => data)
+    .then(checkResponse);
 }
