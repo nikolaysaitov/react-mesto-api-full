@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Header";
@@ -28,7 +29,7 @@ function App() {
   const history = useHistory();
   const [isReg, setIsReg] = useState(false);
   const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
-  const token = localStorage.getItem('jwt');
+  
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -57,9 +58,9 @@ function App() {
     setInfoPopupOpen(false);
     setSelectedCard({ ...selectedCard, isOpened: false });
   }
-
+  const token = localStorage.getItem('jwt');
   useEffect(() => {
-    handleTokenCheck();
+    handleTokenCheck(token);
     if (loggedIn) {
       Promise.all([api.getProfile(), api.getInitialCards()])
         .then(([userData, cardData]) => {
@@ -69,6 +70,7 @@ function App() {
         .catch((err) => console.log(`Ошибка ${err}`));
     }
   }, [loggedIn]);
+
 
   const isOpen =
     isEditAvatarPopupOpen ||
@@ -125,8 +127,8 @@ function App() {
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     const changeLikeCardStatus = !isLiked
-      ? api.addLike(card._id)
-      : api.deleteLike(card._id);
+      ? api.addLike(card._id, token)
+      : api.deleteLike(card._id, token);
     changeLikeCardStatus
       .then((newCard) => {
         setCards((item) => item.map((c) => (c._id === card._id ? newCard : c)));
@@ -136,7 +138,7 @@ function App() {
 
   const handleCardDelete = (card) => {
     api
-      .deleteCard(card._id)
+      .deleteCard(card._id, token)
       .then(() => {
         setCards((cards) => cards.filter((c) => c._id !== card._id));
         closeAllPopups();
@@ -146,7 +148,7 @@ function App() {
 
   const handleUpdateUser = (name, about) => {
     api
-      .editProfile(name, about)
+      .editProfile(name, about, token)
       .then((item) => {
         setCurrentUser(item);
         closeAllPopups();
@@ -155,7 +157,7 @@ function App() {
   };
   const handleUpdateAvatar = (avatar) => {
     api
-      .updateAvatar(avatar.avatar)
+      .updateAvatar(avatar.avatar, token)
       .then((item) => {
         setCurrentUser(item);
         closeAllPopups();
@@ -164,7 +166,7 @@ function App() {
   };
   const handleAddPlaceSubmit = (name, link) => {
     api
-      .addCard(name, link)
+      .addCard(name, link, token)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
