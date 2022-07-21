@@ -19,7 +19,7 @@ function checkResponse(res) {
 }
 
 export const register = (email, password) => {
-    return fetch(`${BASE_URL}signup`, {
+    return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -33,7 +33,7 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
-    return fetch(`${BASE_URL}signin`, {
+    return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -47,7 +47,7 @@ export const authorize = (email, password) => {
 };
 
 export const checkToken = () => {
-    return fetch(`${BASE_URL}users/me`, {
+    return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
