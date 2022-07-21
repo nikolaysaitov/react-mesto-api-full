@@ -4,11 +4,18 @@ const ForbiddenError = require('../errors/forbidden_403');
 const NotFoundError = require('../errors/not-found-err_404');
 
 // GET /cards — возвращает все карточки
+// module.exports.getCards = (_req, res, next) => {
+//   Card.find({})
+//     .then((cards) => res.send({
+//       data: cards,
+//     }))
+//     .catch((err) => {
+//       next(err);
+//     });
+// };
 module.exports.getCards = (_req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({
-      data: cards,
-    }))
+    .then((cards) => res.send(cards))
     .catch((err) => {
       next(err);
     });
