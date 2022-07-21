@@ -1,9 +1,9 @@
-// export const BASE_URL = 'https://saitovkmsapi.nomoredomains.xyz/';
+// export const BASE_URL = 'https://saitovkmsapi.nomoredomains.xyz';
 
 export let BASE_URL = '';
 const { NODE_ENV } = process.env;
 if ( NODE_ENV === 'production' ) {
-    BASE_URL = 'https://saitovkmsapi.nomoredomains.xyz/';
+    BASE_URL = 'https://saitovkmsapi.nomoredomains.xyz';
 } else {
     BASE_URL = 'http://localhost:3000'
 }

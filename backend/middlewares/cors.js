@@ -16,8 +16,8 @@
 
 
 const allowedCors = [
-  'https://saitovkms.nomoredomains.xyz/',
-  'http://saitovkms.nomoredomains.xyz/',
+  'https://saitovkms.nomoredomains.xyz',
+  'http://saitovkms.nomoredomains.xyz',
   'localhost:3000',
   'http://localhost:3000',
 ];

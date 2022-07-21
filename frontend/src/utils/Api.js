@@ -110,7 +110,7 @@ class Api {
 // // });
 
 export const api = new Api({
-  baseUrl: "https://saitovkmsapi.nomoredomains.xyz/",
+  baseUrl: "https://saitovkmsapi.nomoredomains.xyz",
   headers: {
     "Content-Type": "application/json",
   },
