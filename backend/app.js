@@ -1,4 +1,4 @@
-// app.js — входной файл
+require('dotenv').config();
 
 const express = require('express');
 
