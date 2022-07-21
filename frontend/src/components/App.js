@@ -58,7 +58,7 @@ function App() {
     setInfoPopupOpen(false);
     setSelectedCard({ ...selectedCard, isOpened: false });
   }
-  const token = localStorage.getItem('jwt');
+ 
   useEffect(() => {
     handleTokenCheck();
     if (loggedIn) {
@@ -140,6 +140,7 @@ function App() {
   }
 
   const handleCardDelete = (card) => {
+    const token = localStorage.getItem('jwt');
     api
       .deleteCard(card._id, token)
       .then(() => {
@@ -150,6 +151,7 @@ function App() {
   };
 
   const handleUpdateUser = (name, about) => {
+    const token = localStorage.getItem('jwt');
     api
       .editProfile(name, about, token)
       .then((item) => {
@@ -159,6 +161,7 @@ function App() {
       .catch((err) => console.log(`Ошибка ${err}`));
   };
   const handleUpdateAvatar = (avatar) => {
+    const token = localStorage.getItem('jwt');
     api
       .updateAvatar(avatar.avatar, token)
       .then((item) => {
@@ -168,6 +171,7 @@ function App() {
       .catch((err) => console.log(`Ошибка ${err}`));
   };
   const handleAddPlaceSubmit = (name, link) => {
+    const token = localStorage.getItem('jwt');
     api
       .addCard(name, link, token)
       .then((newCard) => {
