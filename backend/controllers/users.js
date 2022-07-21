@@ -9,7 +9,7 @@ const ValidError = require('../errors/validation_error_400');
 // GET /users — возвращает всех пользователей
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -20,7 +20,7 @@ module.exports.getUser = (req, res, next) => {
       if (!user) {
         return next(new NotFoundError('Пользователь по _id не найден'));
       }
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch(next);
 };
@@ -131,7 +131,7 @@ module.exports.getUserInfo = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь по _id не найден');
       }
-      return res.status(200).send({ data: user });
+      return res.status(200).send(user);
     })
     .catch((error) => {
       if (error.name === 'CastError') {
