@@ -46,10 +46,10 @@ function Main({
       </section>
       <section className="pictures">
         <ul className="pictures__board">
-          {cards.map((card) => {
+          {cards.data((card) => {
             return (
               <Card
-                // key={card.cardId}
+                
                 key={card._id}
                 card={card}
                 onCardClick={onCardClick}
@@ -65,3 +65,4 @@ function Main({
 }
 
 export default Main;
+
