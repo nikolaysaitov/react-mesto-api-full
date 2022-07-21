@@ -8,7 +8,7 @@ const { celebrate, Joi, errors } = require('celebrate');
 // const cookieParser = require('cookie-parser');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
-const { cors } = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 const NotFoundError = require('./errors/not-found-err_404');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 

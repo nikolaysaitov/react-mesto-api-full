@@ -1,4 +1,4 @@
-// export const BASE_URL = 'http://saitovkmsapi.nomoredomains.xyz/';
+// export const BASE_URL = 'https://saitovkmsapi.nomoredomains.xyz/';
 
 export let BASE_URL = '';
 const { NODE_ENV } = process.env;
