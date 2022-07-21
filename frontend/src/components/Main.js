@@ -3,8 +3,6 @@ import Card from "./Card.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-
-
 function Main({
   onEditAvatar,
   onEditProfile,
@@ -66,4 +64,3 @@ function Main({
 }
 
 export default Main;
-
