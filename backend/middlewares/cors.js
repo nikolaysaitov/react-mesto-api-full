@@ -19,7 +19,7 @@ const listUrl = () => {
   let list = [];
   if (NODE_ENV) {
     list = [
-      'https://msprod.nomoredomains.xyz',
+      'https://saitovkms.nomoredomains.xyz/',
     ];
   } else {
     list = [
