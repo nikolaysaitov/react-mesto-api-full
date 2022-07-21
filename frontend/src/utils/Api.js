@@ -129,12 +129,12 @@ class Api {
 
 
 export const api = new Api({
-  baseUrl: "http://localhost:3000/",
-  // headers: {
-  //   'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-  //   'Content-Type': 'application/json',
-  //   'Accept': 'application/json',
-  // }
+  baseUrl: "https://saitovkmsapi.nomoredomains.xyz/",
+  headers: {
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  }
 });
 // let baseUrl = '';
 // const { NODE_ENV } = process.env;
