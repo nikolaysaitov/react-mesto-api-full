@@ -62,11 +62,12 @@ function App() {
   useEffect(() => {
     handleTokenCheck();
     if (loggedIn) {
+      const token = localStorage.getItem('jwt');
       Promise.all([api.getProfile(token), api.getInitialCards(token)])
         .then(([userData, cardData]) => {
           setCurrentUser(userData);
           setCards(cardData);
-        })
+        }) 
         .catch((err) => console.log(`Ошибка ${err}`));
     }
   }, [loggedIn]);
@@ -108,6 +109,7 @@ function App() {
   }, [isOpen]);
 
   useEffect(() => {
+    const token = localStorage.getItem('jwt');
     api
       .getProfile(token)
       .then((res) => setCurrentUser(res))
@@ -115,6 +117,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const token = localStorage.getItem('jwt');
     api
       .getInitialCards(token)
       .then((cards) => setCards(cards))
