@@ -46,7 +46,7 @@ function Main({
       </section>
       <section className="pictures">
         <ul className="pictures__board">
-          {cards.data((card) => {
+          {cards.map((card) => {
             return (
               <Card
                 
