@@ -235,7 +235,7 @@ function App() {
         .then((res) => {
           handleLogin();
           history.push("/");
-          setEmail(res.email);
+          setEmail(res.data.email);
         })
         .catch((err) => console.log(err));
     }
