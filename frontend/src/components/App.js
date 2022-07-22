@@ -109,9 +109,9 @@ function App() {
   }, [isOpen]);
 
   useEffect(() => {
-    
+    const token = localStorage.getItem("jwt");
     api
-      .getProfile()
+      .getProfile(token)
       .then((res) => setCurrentUser(res))
       .catch((err) => console.log(err));
   }, []);
@@ -151,7 +151,7 @@ function App() {
   };
 
   const handleUpdateUser = (name, about) => {
-   
+    
     api
       .editProfile(name, about)
       .then((item) => {
