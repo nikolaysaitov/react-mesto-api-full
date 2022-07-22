@@ -22,7 +22,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const cardDeleteButtonClassName = `pictures__delete ${
     isOwn ? "" : "pictures__delete_hidden"
   }`;
-
+  console.log('some-secret-key');
 
 
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем

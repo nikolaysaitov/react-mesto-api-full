@@ -20,6 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger); // подключаем логгерзапросов
 
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("Сервер вот-вот упадёт");
+  }, 0);
+});
+
 app.post(
   "/signup",
   celebrate({
