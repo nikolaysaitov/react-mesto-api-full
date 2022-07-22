@@ -4,8 +4,10 @@ const { PORT = 3000 } = process.env;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { celebrate, Joi, errors } = require("celebrate");
+
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+
 const { login, createUser } = require("./controllers/users");
 const auth = require("./middlewares/auth");
 const cors = require("./middlewares/cors");
@@ -18,10 +20,13 @@ mongoose.connect("mongodb://localhost:27017/mestodb");
 
 // подключаем мидлвары, роуты и всё остальное...
 app.use(cors);
+
 app.use(helmet());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger); // подключаем логгерзапросов
+
 app.use(cookieParser());
 
 app.get("/crash-test", () => {
