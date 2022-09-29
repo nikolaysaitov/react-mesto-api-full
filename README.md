@@ -7,7 +7,7 @@
 
 Технологии: React, Node.js, MongoDB, Express, HTML, CSS, JavaScript, Api, Atlas, Heroku
   
-## [Домен Фронтенда heroku.com](https://mestoherokufrontend.herokuapp.com/)
+## [Домен Фронтенда vercel.com](https://mestoherokufrontend-5t2i.vercel.app/)
 
 ## [Домен Бэкенда heroku.com](https://mestoherokubackend.herokuapp.com/)
 
